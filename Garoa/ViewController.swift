@@ -9,7 +9,7 @@
 import UIKit
 import Mapbox
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MGLMapViewDelegate {
     
     var mapView: MGLMapView!
     
@@ -27,6 +27,15 @@ class ViewController: UIViewController {
         // Set the map's center coordinate -26.4537736,-49.1179425
         mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: lat, longitude: lon), zoomLevel: 15, animated: false)
         view.addSubview(mapView)
+        
+        let point = MGLPointAnnotation()
+        point.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        point.title = "Garoa!"
+        point.subtitle = "Welcome! :)"
+        
+        mapView.addAnnotation(point)
+        
+        mapView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
