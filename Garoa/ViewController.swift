@@ -38,6 +38,10 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         
         mapView.addAnnotation(point)
     }
+    
+    func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        return true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
