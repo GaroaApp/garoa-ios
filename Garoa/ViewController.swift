@@ -20,13 +20,16 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Initialize Mapbox view
+        // Initialize Mapbox view.
         mapView = MGLMapView(frame: view.bounds)
         mapView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         
-        // Set the map's center coordinate -26.4537736,-49.1179425
+        // Set the map's center coordinate -26.4537736,-49.1179425.
         mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: lat, longitude: lon), zoomLevel: 15, animated: false)
         view.addSubview(mapView)
+        
+        // Set the delegate property of our map view to `self` after instantiating it.
+        mapView.delegate = self
         
         let point = MGLPointAnnotation()
         point.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
@@ -34,8 +37,6 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         point.subtitle = "Welcome! :)"
         
         mapView.addAnnotation(point)
-        
-        mapView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
